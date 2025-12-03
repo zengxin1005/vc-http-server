@@ -44,10 +44,13 @@ IOCP层：真正的异步非阻塞
 ✅ 基础安全防护，基础日志监控
 
 
+不支持静态文件下载，静态文件下载请使用Nginx/Apache等，更适合于业务逻辑处理，内部微服务调用！！！！
+
 
 最小化配置，可拓展   
 
 // HTTPS证书配置
+
 struct ServerConfig {
 
 	std::wstring url;
