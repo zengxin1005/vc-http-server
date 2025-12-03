@@ -47,14 +47,21 @@ struct ServerConfig {
 };
 
 static const DWORD COMPLETION_THREAD_COUNT = 1;  // 完成端口线程数
+
 static const DWORD PROCESS_THREAD_COUNT = 1;  // 处理线程数
+
 static const DWORD MAX_CONNECTIONS = 10000; // 最大连接数
+
 // Keep-Alive 常量配置
+
 static const DWORD KEEP_ALIVE_TIMEOUT = 15;        // 15秒超时
+
 static const DWORD CONNECTION_CLEANUP_INTERVAL = 30; // 30秒清理一次
 
 // 优雅关闭相关常量
+
 static const DWORD SHUTDOWN_TIMEOUT = 30000;       // 30秒关闭超时
+
 static const DWORD SHUTDOWN_CHECK_INTERVAL = 100;  // 100ms检查间隔
 
 示例
