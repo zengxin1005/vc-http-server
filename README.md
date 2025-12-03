@@ -20,30 +20,46 @@ IOCP层：真正的异步非阻塞
 多接收线程 + 多工作线程 高并发，高吞吐量，IO异步非阻塞
 
 接收请求1 → 接收请求2 → 接收请求3 → ...
+
     ↓           ↓           ↓
 处理业务1 → 处理业务2 → 处理业务3 → ...
+
     ↓           ↓           ↓  
 消费线程: 发送1 → 发送2 → 发送3 → ...（可选）
 
 ✅ 完整的异步架构 - IOCP + 线程池
+
 ✅ HTTP/HTTPS支持 - 自动证书配置
+
 ✅ Keep-Alive连接管理 - 高性能连接复用
+
 ✅ 轻量配置 - 最小化配置开箱即用
+
 ✅ 优雅关闭 - 完整的停止序列，等待线程退出
+
 ✅ 易于使用 - 简单的消息处理器接口
+
 ✅ 健壮的错误处理，线程安全的消息处理
+
 ✅ 基础安全防护，基础日志监控
+
 
 
 最小化配置，可拓展   
 
 // HTTPS证书配置
 struct ServerConfig {
+
 	std::wstring url;
+	
 	bool enableHttps;
+	
 	std::wstring certSubjectName;  // 证书主题名
+	
 	std::wstring certStoreName;    // 证书存储名
+	
 	DWORD certCheckFlags;          // 证书检查标志
+	
 };
 
 static const DWORD COMPLETION_THREAD_COUNT = 1;  // 完成端口线程数
