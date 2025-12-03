@@ -44,7 +44,7 @@ IOCP层：真正的异步非阻塞
 ✅ 基础安全防护，基础日志监控
 
 
-不支持静态文件下载，静态文件下载请使用Nginx/Apache等，更适合于业务逻辑处理，内部微服务调用！！！！
+不支持静态文件下载，静态文件下载请使用Nginx/Apache等，目前仅支持GET,POST, 更适合于业务逻辑处理，内部微服务调用！！！！
 
 
 最小化配置，可拓展   
@@ -83,6 +83,53 @@ static const DWORD SHUTDOWN_TIMEOUT = 30000;       // 30秒关闭超时
 
 static const DWORD SHUTDOWN_CHECK_INTERVAL = 100;  // 100ms检查间隔
 
-示例
+使用示例
+
+#include "HttpThread.h"
+
+CHttpThread m_pHttpServer; 
+
+//初始化Http
+
+if (!m_pHttpServer.Initialize(L"http://+:80/")) 
+{
+
+	return FALSE;
+	
+}
+
+//初始化Https
+
+ServerConfig config;
+
+config.url = L"https://+:443/";
+
+config.enableHttps = true;
+
+config.enableHttps = false;
+
+config.certStoreName = L"MY";  // 默认在"个人"存储中查找
+
+config.certCheckFlags = 0;
+
+if (!m_pHttpServer.Initialize(config))
+
+{
+
+	return FALSE;
+	
+}
 
 
+//开始监听
+
+if (!m_pHttpServer.Start()) 
+{
+
+	return FALSE;
+	
+}
+
+//关闭结束
+
+m_pHttpServer.Stop();
